@@ -2,13 +2,13 @@ import urllib2
 import time
 import willie
 from bs4 import BeautifulSoup
-  
+
 
 def getrules():
   response = urllib2.urlopen('http://wiki.techinc.nl/index.php/Rules')
   html = response.read()
-  soup = BeautifulSoup(html)  
-  
+  soup = BeautifulSoup(html)
+
   rulediv = soup.findAll('div', {"class" : "mw-content-ltr"})
 
   myrulediv = str(rulediv)
@@ -29,6 +29,9 @@ def rule(bot, trigger):
   therules = getrules()
   try:
     rule = therules[int(rulenum)]
-    bot.say('Rule ' + rulenum + ': ' + rule)
+    if rule:
+      bot.say('Rule ' + rulenum + ': ' + rule)
+    else:
+      bot.say('sorry, no such rule')
   except IndexError:
     bot.say('sorry, no such rule')
