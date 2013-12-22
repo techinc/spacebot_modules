@@ -30,7 +30,7 @@ def trackstate(bot):
   global CHANNEL
   state = checkstate()
   if SPACESTATE != state:
-        bot.msg('#techinc-testing','The space is now ' + state)
+        bot.msg(CHANNEL ,'The space is now ' + state)
         newtopic = 'Welcome to Technologia Incognita, we are ' + state + '. https://www.techinc.nl/ - Social night every Wednesday at ACTA'
         bot.write(('TOPIC', CHANNEL + ' :' + newtopic))
         SPACESTATE = state
