@@ -21,7 +21,7 @@ def trackstate(bot):
   global CHANNEL
   global WHO
   state = checkstate()
-  if SPACESTATE == "closed":
+  if state == "closed":
         bot.msg(CHANNEL,'Space closed, emptying check-in list')
         WHO = []
 
