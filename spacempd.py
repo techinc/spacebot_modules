@@ -36,11 +36,11 @@ def mpd(bot, trigger):
   if ((mpdcommand == 'playing') or (mpdcommand == 'state')) :
     currentsong = client.currentsong()
     currentstatus = client.status()
-
+    
     if currentstatus['state'] == 'play':
-      bot.say('Now playing: ' + currentsong['artist'] + ' - ' + currentsong['title'])
+      saySong(bot,currentsong)
     elif currentstatus['state'] == 'pause':
-      bot.say('Music is currently paused (' + currentsong['artist'] + ')')
+      bot.say('Music is currently paused (' + songNow(currentsong) + ')')
     elif currentstatus['state'] == 'stop':
       bot.say('No music is playing')
 
@@ -48,7 +48,7 @@ def mpd(bot, trigger):
     bot.say('Pressing play on mpd...')
     client.play()
     currentsong = client.currentsong()
-    bot.say('Now playing: ' + currentsong['artist'] + ' - ' + currentsong['title'])
+    saySong(bot,currentsong)
 
   elif mpdcommand == 'pause':
     bot.say('Pausing mpd...')
@@ -62,8 +62,17 @@ def mpd(bot, trigger):
     bot.say('Moving to next song on mpd...')
     client.next()
     currentsong = client.currentsong()
-    bot.say('Now playing: ' + currentsong['artist'] + ' - ' + currentsong['title'])
+    saySong(bot,currentsong)
 
   else:
     bot.say('invalid mpd command')
 
+def songNow(currentsong):
+  if 'artist' in currentsong:
+    cursong = currentsong['artist'] + ' - ' + currentsong['title']
+  else:
+    cursong = currentsong['file'].split("/")[-1]
+  return cursong
+
+def saySong(bot, currentsong):
+  bot.say('Now playing: ' + songNow(currentsong))
