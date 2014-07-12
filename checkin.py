@@ -28,6 +28,9 @@ def trackstate(bot):
 @willie.module.commands('checkin')
 def checkin(bot, trigger):
   global WHO
+  if trigger.host == 'bugblue.sponsor.oftc.net':
+    bot.say(trigger.nick + ' could not be checked in')
+    return
   if trigger.nick in WHO:
     bot.say(trigger.nick + ' is already checked in')
   else:
