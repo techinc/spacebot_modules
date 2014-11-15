@@ -14,14 +14,11 @@ def parking(bot, trigger):
 @willie.module.commands('setparking')
 def setparking(bot, trigger):
   parkingcode = trigger.group(2)
+  f = open('parkingcodefile', 'w')
   if parkingcode is None:
-    f = open('parkingcodefile', 'w')
     parkingcode = ""
-    f.write(parkingcode)
     bot.say("Parking code has been cleared")
   else:
-    parkingcode = trigger.group(2)
-    f = open('parkingcodefile', 'w')
-    f.write(parkingcode)
     bot.say("Parking code has been set to " + parkingcode)
+   f.write(parkingcode)
 
