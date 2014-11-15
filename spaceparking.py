@@ -20,5 +20,5 @@ def setparking(bot, trigger):
     bot.say("Parking code has been cleared")
   else:
     bot.say("Parking code has been set to " + parkingcode)
-   f.write(parkingcode)
+    f.write(parkingcode)
 
