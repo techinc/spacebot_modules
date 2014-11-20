@@ -5,7 +5,7 @@ from willie.module import commands, interval
 
 INTERVAL = 5
 SPACESTATE="unknown"
-CHANNEL = "#techinc-testing"
+CHANNEL = "#techinc"
 SPACEURL = "http://techinc.nl/space/spacestate"
 WHO = []
 
@@ -22,7 +22,6 @@ def trackstate(bot):
   global WHO
   state = checkstate()
   if state == "closed":
-        bot.msg(CHANNEL,'Space closed, emptying check-in list')
         WHO = []
 
 @willie.module.commands('checkin')
