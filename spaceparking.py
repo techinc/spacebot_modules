@@ -3,7 +3,9 @@ import time
 import willie
 
 @willie.module.commands('parking')
+@willie.module.example('.parking','parking')
 def parking(bot, trigger):
+  """Returns the current parking code if set"""
   f = open('parkingcodefile', 'r')
   parkingcode = f.read()
   if (parkingcode == ""):
@@ -12,7 +14,9 @@ def parking(bot, trigger):
     bot.say('Parking code is currently ' + parkingcode)
 
 @willie.module.commands('setparking')
+@willie.module.example('.setparking','setparking')
 def setparking(bot, trigger):
+  """Sets the parking code with the provided argument"""
   parkingcode = trigger.group(2)
   f = open('parkingcodefile', 'w')
   if parkingcode is None:
