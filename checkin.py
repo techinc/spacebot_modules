@@ -26,7 +26,9 @@ def trackstate(bot):
         WHO = []
 
 @willie.module.commands('checkin')
+@willie.module.example('.checkin','checkin')
 def checkin(bot, trigger):
+  """Adds you in to the list of people currently in the space"""
   global WHO
   if trigger.nick in WHO:
     bot.say(trigger.nick + ' is already checked in')
@@ -35,7 +37,9 @@ def checkin(bot, trigger):
     bot.say(trigger.nick + ' is now checked in')
 
 @willie.module.commands('checkout')
+@willie.module.example('.checkout','checkout')
 def checkout(bot, trigger):
+  """Removes you from the list of people currently in the space"""
   global WHO
   if trigger.nick in WHO:
     WHO.remove(trigger.nick)
@@ -44,13 +48,17 @@ def checkout(bot, trigger):
     bot.say(trigger.nick + ' was not checked in')
 
 @willie.module.commands('emptylist')
+@willie.module.example('.emptylist','emptylist')
 def emptylist(bot, trigger):
+  """Emptys the list of people currently checked in at the space"""
   global WHO
   WHO = []
   bot.say('Check-in list has been emptied')
 
 @willie.module.commands('who')
+@willie.module.example('.who','who')
 def checkwho(bot, trigger):
+  """Returns the list of people currently checked in at the space"""
   global WHO
   peoplelist = ''
   if not WHO:
@@ -61,13 +69,17 @@ def checkwho(bot, trigger):
     bot.say(peoplelist)
 
 @willie.module.commands('anoncheckin')
+@willie.module.example('.anoncheckin','anoncheckin')
 def anoncheckin(bot, trigger):
+  """Adds an anonymous user to the list of people currently checked in at the space"""
   global WHO
   WHO.append('anonymous')
   bot.say('anonymous is now checked in')
 
 @willie.module.commands('anoncheckout')
+@willie.module.commands('.anoncheckout','anoncheckout')
 def anoncheckout(bot, trigger):
+  """Removes an anonymous user from the list of people currently checked in at the space"""
   global WHO
   if 'anonymous' in WHO:
     WHO.remove('anonymous')

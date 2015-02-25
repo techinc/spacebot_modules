@@ -10,7 +10,9 @@ import willie
 import urllib2
 
 @willie.module.commands('spacestate')
+@willie.module.example('.spacestate', 'Spacestate')
 def spacestate(bot, trigger):
+  """Replies with the current space state - Open/Closed"""
   response = urllib2.urlopen('http://techinc.nl/space/spacestate')
   html = response.read()
   bot.say('The space is currently ' + html)

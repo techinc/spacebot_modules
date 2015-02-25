@@ -24,7 +24,9 @@ def getrules():
   return therules
 
 @willie.module.commands('rule')
+@willie.module.example('.rule 34','rule')
 def rule(bot, trigger):
+  """Returns a techinc rule from the wiki of the number specified"""
   rulenum = trigger.group(2)
   therules = getrules()
   try:

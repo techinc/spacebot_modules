@@ -10,7 +10,9 @@ PORT = '6600'
 PASSWORD = 'password goes here'
 
 @willie.module.commands('mpd')
+@willie.module.example('.mpd playing or .mpd play or .mpd next','mpdplaying')
 def mpd(bot, trigger):
+  """Used to control the mpd music player at the space"""
   rulenum = trigger.group(2)
 
   ## MPD object instance

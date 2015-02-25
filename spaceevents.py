@@ -30,11 +30,15 @@ def getevents(bot, number):
     bot.say(stuff[0] + " - " + stuff[1])
 
 @willie.module.commands('nextevents')
+@willie.module.example('.nextevents','nextevents')
 def eve(bot, trigger):
+  """Returns a list of the next events at the space"""
   eventnum = trigger.group(2)
   getevents(bot, 3)
 
 @willie.module.commands('nextevent')
+@willie.module.example('.nextevent','nextevent')
 def nexteve(bot, trigger):
+  """Returns the next event at the space"""
   getevents(bot, 1)
 

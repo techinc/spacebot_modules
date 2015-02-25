@@ -36,7 +36,9 @@ def trackstate(bot):
         SPACESTATE = state
 
 @willie.module.commands('togglestate')
+@willie.module.example('.togglestate','togglestate')
 def togglestate(bot, trigger):
+  """Toggles the state of the space (open/closed)"""
   currentstate = checkstate()
   bot.say('Changing Spacestate')
   if currentstate == 'open':
@@ -46,7 +48,9 @@ def togglestate(bot, trigger):
   changestate(state)
 
 @willie.module.commands('spacestate')
+@willie.module.example('.spacestate', 'spacestate')
 def spacestate(bot, trigger):
+  """Returns the current state of the space (open/closed)"""
   global SPACEURL
   response = urllib2.urlopen(SPACEURL)
   html = response.read()
