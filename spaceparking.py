@@ -1,6 +1,7 @@
 import urllib2
 import time
 import willie
+import os
 
 @willie.module.commands('parking')
 @willie.module.example('.parking','parking')
