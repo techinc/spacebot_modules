@@ -1,3 +1,4 @@
+import os
 import willie
 from willie.module import commands, interval
 
