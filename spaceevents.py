@@ -27,7 +27,10 @@ def getevents(bot, number):
   botmessage = ""
   for stuff in eventfinallevel:
     print(str(stuff))
-    bot.say(stuff[0] + " - " + stuff[1])
+    try:
+      bot.say(stuff[0] + " - " + stuff[1])
+    except IndexError:
+      break
 
 @willie.module.commands('nextevents')
 @willie.module.example('.nextevents','nextevents')
