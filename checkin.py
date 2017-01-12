@@ -66,8 +66,7 @@ def checkwho(bot, trigger):
   if not WHO:
     bot.say('Nobody currently checked in at the space')
   else:
-    for people in WHO:
-      peoplelist += people + ','
+    peoplelist = ", ".join(WHO)
     bot.say(peoplelist)
 
 @willie.module.commands('anoncheckin')
