@@ -1,6 +1,7 @@
 import urllib2
 import time
 import willie
+import os
 
 @willie.module.commands('parking')
 @willie.module.example('.parking','parking')
@@ -11,7 +12,7 @@ def parking(bot, trigger):
   if (parkingcode == ""):
     bot.say("No parking code is currently set")
   else:
-    bot.say('Parking code is currently ' + parkingcode)
+    bot.say('Parking code is currently ' + parkingcode + ' - last modified: ' + time.ctime(os.path.getmtime('parkingcodefile')))
 
 @willie.module.commands('setparking')
 @willie.module.example('.setparking','setparking')
