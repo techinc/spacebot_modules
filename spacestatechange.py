@@ -3,6 +3,8 @@ import time
 import willie
 from willie.module import commands, interval
 
+from checkin import emptylist
+
 INTERVAL = 5
 SPACESTATE = "unknown"
 CHANNEL = "#techinc"
@@ -40,12 +42,14 @@ def trackstate(bot):
 def togglestate(bot, trigger):
   """Toggles the state of the space (open/closed)"""
   currentstate = checkstate()
-  bot.say('Changing Spacestate')
   if currentstate == 'open':
-    state = 'closed'
+    newstate = 'closed'
   else:
-    state = 'open'
-  changestate(state)
+    newstate = 'open'
+  bot.say('Changing Spacestate from %s to %s' % (currentstate, newstate))
+  changestate(newstate)
+  if newstate == 'closed':
+    emptylist(bot, trigger)
 
 @willie.module.commands('spacestate')
 @willie.module.example('.spacestate', 'spacestate')
