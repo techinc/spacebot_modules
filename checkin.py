@@ -1,7 +1,9 @@
 import urllib2
-import time
+
 import willie
 from willie.module import commands, interval
+
+from spacestatechange import SPACESTATE
 
 INTERVAL = 5
 SPACESTATE="unknown"
@@ -29,6 +31,9 @@ def trackstate(bot):
 def checkin(bot, trigger):
   """Adds you in to the list of people currently in the space"""
   global WHO
+  if SPACESTATE == "closed":
+    "Space is closed. %s cannot check-in. D'oh!" % trigger.nick
+    return
   if trigger.host == 'bugblue.sponsor.oftc.net':
     bot.say(trigger.nick + ' could not be checked in')
     return
